@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
@@ -40,10 +39,11 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
+    props.changeShowExpenseForm();
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
@@ -83,6 +83,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={props.changeShowExpenseForm}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
