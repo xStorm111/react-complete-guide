@@ -15,10 +15,12 @@ function App() {
     setUsers((prevState) => [...prevState, newUser]);
   };
   return (
-    <div>
+    //<React.Fragment> === <>
+    //Some projects doesn't support <>
+    <>
       <AddUser onAddUser={addUserHandler} />
       {users.length > 0 && <UsersList users={users} />}
-    </div>
+    </>
   );
 }
 
